@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: anshxosint-master
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health.php
+    envVars:
+      - key: DB_PATH
+        value: /var/data/app.sqlite
+      - key: ADMIN_SETUP_TOKEN
+        generateValue: true
+    disk:
+      name: anshxosint-data
+      mountPath: /var/data
+      sizeGB: 1
